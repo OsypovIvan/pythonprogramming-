@@ -1,0 +1,17 @@
+<h1>Список блогерів</h1>
+<table border="1">
+  <tr>
+    <th>Ім'я</th>
+    <th>Категорія</th>
+    <th>Опис</th>
+  </tr>
+  {% for id, b in bloggers.items %}
+    <tr>
+      <td><a href="{% url 'blogger_detail' blogger_id=id %}">{{ b.name }}</a></td>
+      <td>{{ b.category }}</td>
+      <td>{{ b.description }}</td>
+    </tr>
+  {% endfor %}
+</table>
+<br>
+<a href="{% url 'home' %}">На головну</a>

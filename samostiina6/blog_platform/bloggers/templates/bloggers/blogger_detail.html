@@ -1,0 +1,19 @@
+<h1>{{ blogger.name }}</h1>
+<p>Категорія: {{ blogger.category }}</p>
+<p>{{ blogger.description }}</p>
+
+<h3>Соцмережі</h3>
+<ul>
+  {% for platform, link in blogger.social.items %}
+    <li><a href="{{ link }}" target="_blank">{{ platform }}</a></li>
+  {% endfor %}
+</ul>
+
+<h3>Останні публікації</h3>
+<ul>
+  {% for post in blogger.posts %}
+    <li>{{ post }}</li>
+  {% endfor %}
+</ul>
+
+<a href="{% url 'bloggers_list' %}">Назад до списку блогерів</a>
