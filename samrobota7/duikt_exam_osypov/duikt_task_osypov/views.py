@@ -17,7 +17,6 @@ def install_demo(request):
         {"CAR_NAME": "X5", "CAR_MODEL": "2023", "CAR_PRICE": 60000, "CAR_BRAND": "BMW"},
     ]
 
-    # === BRANDS ===
     for b in brands_data:
         brand, created = cars_brand.objects.get_or_create(
             BRAND_NAME=b["BRAND_NAME"],
@@ -31,7 +30,6 @@ def install_demo(request):
         else:
             output.append(f"Пропуск (вже існує): {b['BRAND_NAME']}<br>")
 
-    # === CARS ===
     for c in cars_data:
         brand = cars_brand.objects.get(BRAND_NAME=c["CAR_BRAND"])
         car, created = cars_info.objects.get_or_create(
@@ -53,3 +51,4 @@ def install_demo(request):
 def show_page(request):
     cars = cars_info.objects.all()
     return render(request, "template.html", {"cars": cars})
+
